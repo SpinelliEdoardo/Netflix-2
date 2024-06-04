@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/391827d54c.js" crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="./Assets/favicon.png" type="image/x-icon">
+    <title>Netflix Italia - Watch TV Shows Online, Watch Movies Online</title>
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500;700;800&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: #000;
+    color: #fff;
+}
+
+.header {
+    width: 100%;
+    height: 100vh;
+    background-image: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)), url(./Assets/header-image.png);
+    background-size: cover;
+    background-position: center;
+    padding: 10px 8%;
+    position: relative;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0;
+}
+
+.logo {
+    width: 150px;
+    cursor: pointer;
+}
+
+nav button {
+    border: none;
+    outline: none;
+    background-color: #db0001;
+    color: #fff;
+    padding: 7px 20px;
+    font-size: 12px;
+    border-radius: 4px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.lang-btn {
+    display: inline-flex;
+    align-items: center;
+    background: transparent;
+    border: 1px solid #fff;
+    padding: 7px 10px;
+}
+
+.lang-btn img {
+    width: 10px;
+    margin-left: 10px;
+} 
+
+.fa-globe {
+    color: #fff;
+    width: 10px;
+    margin-right: 10px;
+}
+
+.header-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    text-align: center;
+    margin-top: 100px;
+}
+
+.header-content h1 {
+    font-size: 60px;
+    line-height: 70px;
+    font-weight: 600;
+    max-width: 650px;
+}
+
+.header-content h3 {
+    font-weight: 400;
+    margin-bottom: 20px;
+}
+
+.email-signup {
+    background: #fff;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    margin-top: 30px;
+    overflow: hidden;
+}
+
+.email-signup input {
+    flex: 1;
+    border: 0;
+    outline: 0;
+    margin-left: 20px;
+}
+
+.email-signup button {
+    background-color: #db0001;
+    border: none;
+    outline: none;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 15px 30px;
+}
+
+
+.features {
+    padding: 50px 12%;
+    font-size: 22px;
+}
+
+.row {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    flex-wrap: wrap;
+    padding: 50px 0;
+}
+
+.text-col, .img-col {
+    flex-basis: 50%;
+    margin-bottom: 20px;
+}
+
+.img-col img {
+    display: block;
+    width: 90%;
+    margin: auto;
+}
+
+.features h2 {
+    font-size: 50px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.faq {
+    padding: 10px 12%;
+    text-align: center;
+    font-size: 18px;
+}
+
+.faq h2 {
+    font-size: 40px;
+    font-weight: 500;
+}
+
+.accordion {
+    margin: 60px auto;
+    width: 100%;
+    max-width: 750px;
+}
+
+.accordion li {
+    list-style: none;
+    width: 100%;
+    padding: 5px;
+}
+
+.accordion li label {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    font-size: 18px;
+    font-weight: 500;
+    background-color: #303030;
+    margin-bottom: 2px;
+    cursor: pointer;
+    position: relative;
+}
+
+label::after {
+    content: '+';
+    font-size: 34px;
+    position: absolute;
+    right: 20px;
+    transition: transform 0.5s;
+}
+
+input[type="radio"] {
+    display: none;
+}
+
+.accordion .content {
+    background-color: #303030;
+    text-align: left;
+    padding: 0 20px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s, padding 0.5s;
+}
+
+.accordion input[type="radio"]:checked + label + .content {
+    max-height: 600px;
+    padding: 30px 20px;
+}
+
+.accordion input[type="radio"]:checked + label::after {
+    transform: rotate(135deg);
+}
+
+.faq small {
+    font-size: 13px;
+}
+
+.faq .email-signup {
+    max-width: 600px;
+    margin: 20px auto 60px;
+}
+
+
+.footer {
+    padding: 50px 15% 10px;
+    border-top: 6px solid #333;
+    color: #777;
+}
+
+.footer h2 {
+    font-size: 18px;
+    font-weight: 400;
+    margin-bottom: 30px;
+}
+
+.footer .col {
+    flex-basis: 25%;
+    flex-grow: 1;
+    margin-bottom: 20px;
+}
+
+.footer .col a {
+    display: block;
+    color: #777;
+    font-size: 14px;
+    margin-bottom: 10px;
+    text-decoration: none;
+}
+
+.footer .row {
+    align-items: flex-start;
+    padding: 10px 0px;
+}
+
+.footer .lang-btn {
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 3px;
+}
+
+.copyright-text {
+    font-size: 14px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+
+
+@media only screen and (max-width: 600px) {
+    .logo {
+        width: 100px;
+    }
+
+    nav button {
+        padding: 5px 10px;
+    }
+
+    nav .lang-btn {
+        padding: 4px 8px;
+    }
+
+    .header-content {
+        position: unset;
+        transform: none;
+        padding-top: 150px;
+    }
+
+    .header-content h1 {
+        font-size: 30px;
+    }
+
+    .email-signup button {
+        font-size: 12px;
+        padding: 10px 15px;
+    }
+
+    .text-col, .img-col {
+        flex-basis: 100%;
+    }
+
+    .features h2 {
+        font-size: 30px;
+    }
+
+    .features p {
+        font-size: 15px;
+    }
+
+    .row:nth-child(2), .row:nth-child(4) {
+        flex-direction: column-reverse;
+    }
+
+    .features .row {
+        padding: 10px 0;
+    }
+
+    .faq h2 {
+        font-size: 20px;
+    }
+
+    .accordion .content {
+        font-size: 14px;
+    }
+
+    .accordion li label {
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    label::after {
+        font-size: 22px;
+    }
+}
+    </style>
+</head>
+<body>
+    <div class="header">
+        <nav>
+            <img class="logo" src="./Assets/logo.png" alt="logo">
+            <div>
+                <button class="lang-btn"><i class="fa-solid fa-globe"></i> Italia <img src="./Assets/down-icon.png"></button>
+                <button class="btn" id="Sign-In-btn">Accedi</button>
+            </div>
+        </nav>
+
+        <div class="header-content">
+            <h1>Film, serie TV e tanto altro, senza limiti</h1>
+            <h3>Guarda ciò che vuoi ovunque. Disdici quando vuoi</h3>
+            <p>Vuoi guardare Netflix? Inserisci l'indirizzo email per abbonarti o riattivare il tuo abbonamento</p>
+            <form action="#" class="email-signup">
+                <input type="email" placeholder="Email address" required>
+                <button type="submit">Inizia</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="features">
+        <div class="row">
+            <div class="text-col">
+                <h2>Goditi Netflix sulla tua TV</h2>
+                <p>Guarda Netflix su smart TV, Playstation, Xbox, Chromecast, Apple TV, lettori Blu-ray e molti altri dispositivi.</p>
+            </div>
+            <div class="img-col">
+                <img src="./Assets/feature-1.png" alt="feature-1">
+            </div>
+        </div>
+        <div class="row">
+            <div class="img-col">
+                <img src="./Assets/feature-2.png" alt="feature-2">
+            </div>
+            <div class="text-col">
+                <h2>Scarica le tue serie da guardare offline</h2>
+                <p>Guarda in aereo, sul treno, in astronave...</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="text-col">
+                <h2>Guarda Netflix ovunque</h2>
+                <p>Cellulare, tablet, laptop e TV: scegli tu cosa usare per guardare in streaming film e serie TV senza limiti.</p>
+            </div>
+            <div class="img-col">
+                <img src="./Assets/feature-3.png" alt="feature-3">
+            </div>
+        </div>
+        <div class="row">
+            <div class="img-col">
+                <img src="./Assets/feature-4.png" alt="feature-4">
+            </div>
+            <div class="text-col">
+                <h2>Crea profili per i bambini</h2>
+                <p>I bambini scoprono nuove avventure in compagnia dei loro personaggi preferiti in uno spazio tutto loro già incluso nel tuo abbonamento.</p>
+            </div>
+        </div>
+    </div>
+
+
+  
+    <div class="faq">
+        <h2>Domande frequenti</h2>
+
+        <ul class="accordion">
+            <li>
+                <input type="radio" name="accordion" id="first">
+                <label for="first">Cos'è Netflix?</label>
+                <div class="content">
+                    <p>Netflix è un servizio di streaming che offre una varietà di serie TV, film, documentari pluripremiati e tanto altro su una vasta gamma di dispositivi connessi a Internet.<br><br>
+                        Guarda quello che vuoi, quando vuoi. Il tutto a una quota mensile ridotta. C'è sempre qualcosa di nuovo da scoprire: aggiungiamo nuovi film e serie TV ogni settimana!</p>
+                </div>
+            </li>
+            <li>
+                <input type="radio" name="accordion" id="second">
+                <label for="second">Quanto costa Netflix?</label>
+                <div class="content">
+                    <p>Guarda Netflix su smartphone, tablet, Smart TV, laptop o dispositivi per lo streaming, il tutto per un importo mensile fisso. Piani da 5,49 € a 17,99 € al mese. Nessun costo aggiuntivo, nessun contratto.</p>
+                </div>
+            </li>
+            <li>
+                <input type="radio" name="accordion" id="third">
+                <label for="third">Dove posso guardare Netflix?</label>
+                <div class="content">
+                    <p>Guarda Netflix dove vuoi, quando vuoi. Accedi al tuo account per guardare subito Netflix dal tuo computer su netflix.com oppure da qualsiasi dispositivo connesso a Internet che supporta l'app Netflix, come smart TV, smartphone, tablet, lettori multimediali per streaming e console per videogiochi.<br><br>
+                        Con l'app per iOS o Android puoi anche scaricare i tuoi programmi preferiti. Usa la funzionalità di download per guardare i contenuti mentre sei in viaggio e senza connessione a Internet. Porta Netflix sempre con te .</p>
+                </div>
+            </li>
+            <li>
+                <input type="radio" name="accordion" id="fourth">
+                <label for="fourth">Come posso disdire?</label>
+                <div class="content">
+                    <p>Netflix è flessibile. Nessun contratto fastidioso e nessun impegno. Puoi facilmente disdire il tuo contratto online con due clic. Nessuna penale: attiva o disdici il tuo account in qualsiasi momento.</p>
+            </li>
+            <li>
+                <input type="radio" name="accordion" id="fifth">
+                <label for="fifth">Cosa posso guardare su Netflix?</label>
+                <div class="content">
+                    <p>Netflix ha un nutrito catalogo di lungometraggi, documentari, serie TV, anime, originali Netflix pluripremiati e tanto altro. Guarda tutto quello che vuoi, in qualsiasi momento.</p>
+                </div>
+            </li>
+            <li>
+                <input type="radio" name="accordion" id="sixth">
+                <label for="sixth">Netflix è adatto ai bambini?</label>
+                <div class="content">
+                    <p>L'area Netflix Bambini, già inclusa nell'abbonamento, offre ai genitori un maggiore controllo sui contenuti e ai più piccoli uno spazio dedicato dove guardare serie TV e film per tutta la famiglia.<br><br>
+                        I profili Bambini hanno un filtro famiglia con PIN che ti permette di limitare l'accesso ai contenuti in base alla fascia d'età e bloccare la visione di titoli specifici.</p>
+                </div>
+            </li>
+        </ul>
+        
+        <small>Vuoi guardare Netflix? Inserisci l'indirizzo email per abbonarti o riattivare il tuo abbonamento.</small>
+        
+        <form action="#" class="email-signup">
+            <input type="email" placeholder="Email address" required>
+            <button type="submit">Inizia</button>
+        </form>  
+    </div>
+
+    <div class="footer">
+        <h2>Domande? Chiama 800-130-364</h2>
+
+        <div class="row">
+            <div class="col">
+                <a href="#">Domande frequenti</a>
+                <a href="#">Rapporti con gli investitori</a>
+                <a href="#">Come guardare Netflix</a>
+                <a href="#">Informazioni sull'azienda</a>
+                <a href="#">Note Legali</a>
+            </div>
+            <div class="col">
+                <a href="#">Centro assistenza</a>
+                <a href="#">Opportunità di lavoro</a>
+                <a href="#">Condizioni di utilizzo</a>
+                <a href="#">Contattaci</a>
+                <a href="#">Solo su Netflix</a>
+            </div>
+            <div class="col">
+                <a href="#">Account</a>
+                <a href="#">Riscatta carte regalo</a>
+                <a href="#">Privacy</a>
+                <a href="#">Test di velocità</a>
+                <a href="#">Preferenze per la pubblicità</a>
+            </div>
+            <div class="col">
+                <a href="#">Media Centre</a>
+                <a href="#">Acquista carte regalo</a>
+                <a href="#">Preferenze per i cookie</a>
+                <a href="#">xGaranzia legale</a>
+            </div>
+        </div>
+
+        <button class="lang-btn"><i class="fa-solid fa-globe"></i> Italiano <img src="./Assets/down-icon.png"></button>
+
+        <p class="copyright-text">Netflix Italia</p>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            document.querySelector('#Sign-In-btn').addEventListener('click', function () {
+                window.location.href = 'login.html';
+            });
+            
+        });
+    </script>
+</body>
+</html>

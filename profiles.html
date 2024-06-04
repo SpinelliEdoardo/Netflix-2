@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Netflix Profiles</title>
+    <style>
+        body {
+    background-color: #141414;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    text-align: center;
+}
+
+h1 {
+    margin-bottom: 2rem;
+}
+
+.profiles {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+.profile {
+    text-align: center;
+    cursor: pointer;
+}
+
+.profile img {
+    border-radius: 10%;
+    width: 150px;
+    height: 150px;
+    margin-bottom: 0.5rem;
+    transition: transform 0.3s;
+}
+
+.profile span {
+    display: block;
+    font-size: 1.2rem;
+}
+
+.profile:hover img {
+    transform: scale(1.1);
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Chi sta Guardando?</h1>
+        <div class="profiles">
+            <div class="profile" data-name="User 1">
+                <img src="./static/Bojack Horseman.png" alt="User 1">
+                <span>Edoardo</span>
+            </div>
+            <div class="profile" data-name="User 2">
+                <img src="./static/Caasa di carta.png" alt="User 2">
+                <span>Utente 2</span>
+            </div>
+            <div class="profile" data-name="User 3">
+                <img src="./static/one pice.png" alt="User 3">
+                <span>Utente 3</span>
+            </div>
+            <div class="profile" data-name="User 4">
+                <img src="./static/Dender.png" alt="User 4">
+                <span>Utente 4</span>
+            </div>
+        </div>
+    </div>
+    <script>
+                document.addEventListener('DOMContentLoaded', () => {
+    const profiles = document.querySelectorAll('.profile');
+
+    profiles.forEach(profile => {
+        profile.addEventListener('click', () => {
+            const userName = profile.getAttribute('data-name');
+            // Redirect to Netflix homepage or any other URL
+            window.location.href = 'homepage-5.html'; // You can replace this URL with the desired destination
+        });
+    });
+});
+    </script>
+</body>
+</html>

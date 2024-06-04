@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage</title>
+    <style>
+        * {
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #111;
+            font-family: Arial, Helvetica, sans-serif;
+            scroll-behavior: smooth; /* Smooth scrolling */
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px;
+            z-index: 1;
+            transition-timing-function: ease-in;
+            transition: all 0.5s;
+            background-color: rgba(0, 0, 0, 0.8); /* Background color for better visibility */
+        }
+
+        .nav-logo {
+            width: 80px;
+            object-fit: contain;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            margin-left: 20px;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .nav-links a:hover {
+            color: #e50914;
+        }
+
+        .nav-avatar {
+            width: 30px;
+            object-fit: contain;
+        }
+
+        .nav-search {
+            display: flex;
+            align-items: center;
+            color: white;
+        }
+
+        .nav-search input {
+            background-color: transparent;
+            border: none;
+            border-bottom: 1px solid #fff;
+            color: #fff;
+            padding: 5px 10px;
+            margin-left: 10px;
+            outline: none;
+            font-size: 16px;
+        }
+
+        .nav-search input::placeholder {
+            color: #fff;
+        }
+
+        .banner {
+            color: #fff;
+            object-fit: contain;
+            background-image: url('./static/banner-Transformers 1.png');
+            height: 450px;
+            background-size: cover;
+            margin-top: 80px; /* Adjust for the fixed nav bar */
+        }
+
+        .banner-contents {
+            margin-left: 30px;
+            padding-top: 140px;
+            height: 190px;
+        }
+
+        .banner-title {
+            font-size: 3rem;
+            font-weight: 800;
+            padding-bottom: 0.3rem;
+        }
+
+        .banner-desc {
+            width: 45rem;
+            line-height: 1.3;
+            padding-top: 1rem;
+            font-size: 0.8rem;
+            max-width: 360px;
+            height: 80px;
+        }
+
+        .banner-button {
+            cursor: pointer;
+            color: #fff;
+            outline: none;
+            border: none;
+            font-weight: 700;
+            padding-left: 2rem;
+            padding-right: 2rem;
+            padding-top: 0.5rem;
+            margin-right: 1rem;
+            background-color: rgba(51, 51, 51, 0.51);
+            padding-bottom: 0.5rem;
+        }
+
+        .banner-button:hover {
+            color: #111;
+            background-color: #e6e6e6;
+            transition: all 0.2s;
+        }
+
+        .movie-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            padding-top: 20px;
+        }
+
+        .movie-item {
+            position: relative;
+            width: 200px;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 1rem;
+        }
+
+        .movie-item img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 8px;
+            transition: transform 0.2s;
+        }
+
+        .movie-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.6);
+        }
+
+        .overlay iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .movie-item:hover .overlay {
+            display: flex;
+        }
+
+        .description {
+            color: #fff;
+            padding: 20px;
+            font-size: 2rem;
+        }
+
+        .sidebar {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1001;
+            top: 0;
+            left: 0;
+            background-color: rgba(20, 20, 20, 0.9);
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+        }
+
+        .sidebar a {
+            padding: 8px 8px 8px 32px;
+            text-decoration: none;
+            font-size: 25px;
+            color: #fff;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .sidebar a:hover {
+            color: #e50914;
+        }
+
+        .sidebar .closebtn {
+            position: absolute;
+            top: 0;
+            right: 25px;
+            font-size: 36px;
+            margin-left: 50px;
+        }
+
+        .sidebar #sidebar-search-input {
+            width: 80%;
+            padding: 0.5rem;
+            margin: 10px auto;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .sidebar #sidebar-search-input:focus {
+            outline: none;
+            border: 2px solid #e50914;
+        }
+
+        .nav-left{
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links{
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav">
+            <div class="nav-left">
+                <img src="./Assets/logo.png" alt="Logo" class="nav-logo"/>
+                <div class="nav-links">
+                    <a href="#">Home</a>
+                    <a href="#popolari">Popolari</a>
+                    <a href="#scelte-per-te-oggi">Scelte per te oggi</a>
+                    <a href="la mia lista-2.html">La mia lista</a>
+                </div>
+            </div>
+            <div class="nav-search">
+                <input type="text" placeholder="Cerca titoli, persone, generi" id="search-input">
+                <img src="./static/Bojack Horseman.png" alt="Avatar" class="nav-avatar"/> 
+            </div>
+        </div>
+    </nav>
+    <header class="banner">
+        <div class="banner-contents">
+            <h1 class="banner-title">Transformers 1</h1>
+            <div class="banner-buttons">
+                <button class="banner-button">Riproduci</button>
+                <button class="banner-button">La mia lista </button>
+            </div>
+            <h1 class="banner-desc">Quando la prima automobile di Sam Witwichy si rivela essere un robot alieno mutaforma, il ragazzo scopre di essere la chiave per salvare la Terra dai malvagi Decepticon</h1>
+        </div>
+    </header>
+    <main>
+        <h2 class="description">Popolari</h2>
+        <div class="movie-list" id="movie-list">
+            <div class="movie-item" data-title="Transformers 1" data-trailer="https://www.youtube.com/embed/CbX_SIz_9fk?autoplay=1">
+                <img src="./static/Transformers 1 Megan Fox.png" alt="Transformers 1">
+                <div class="overlay">
+                    <iframe src="" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="movie-item" data-title="Transformers 2 la vendetta del caduto" data-trailer="https://www.youtube.com/embed/K7gpUYGiJy4?autoplay=1">
+                <img src="./static/Transformers 2.png" alt="Transformers 2 l vendetta del caduto">
+                <div class="overlay">
+                    <iframe src="" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="movie-item" data-title="Transformers Dark of The Moon" data-trailer="https://www.youtube.com/embed/E-Sg_zJrDxc?autoplay=1">
+                <img src="./static/Transformers.png" alt="Transformers Dark of The Moon">
+                <div class="overlay">
+                    <iframe src="" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="movie-item" data-title="Transformers 4 l'era dell'estinsione" data-trailer="https://www.youtube.com/embed/LKVS0xPM80o?autoplay=1">
+                <img src="./static/Transformers 4.png" alt="Transformers 4 l'era dell'estinsione">
+                <div class="overlay">
+                    <iframe src="" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="movie-item" data-title="Transformers 5 l'ultimo cavaliere" data-trailer="https://www.youtube.com/embed/kUXl-L-bvQo?autoplay=1" frameborder="0"  allow="autoplay; encrypted-media" allowfullscreen >
+                <img src="./static/Transformers L'ultimo Cavaliere.png" alt="Transformers 5 l'ultimo cavaliere">
+                <div class="overlay">
+                    <iframe src="" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="movie-item" data-title="Transformers rise of the best" data-trailer="https://www.youtube.com/embed/itnqEauWQZM?autoplay=1"frameborder="0" allow="autoplay; encrypted-media" allowfullscreen >
+                <img src="./static/Transformers rise of the best-2.png." alt="Transformers  rise of the best">
+                <div class="overlay">
+                    <iframe src="" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="movie-item" data-title="Avengers End Game" data-trailer="https://www.youtube.com/embed/TcMBFSGVi1c?autoplay=1">
+                <img src="./static/Avengers-EndGame.png" alt="Avengers End Game">
+                <div class="overlay">
+                    <iframe src="" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </main>
+        <main>
+            <h2 class="description">Scelti per te oggi</h2>
+            <div class="movie-list" id="movie-list">
+                <div class="movie-item" data-title="Iron Man 1" data-trailer="https://www.youtube.com/embed/8ugaeA-nMTc?autoplay=1">
+                    <img src="./static/Iron Man-1.png" alt="Iron Man 1">
+                    <div class="overlay">
+                        <iframe src="" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
+                <div class="movie-item" data-title="Iron Man 2" data-trailer="https://www.youtube.com/embed/wKtcmiifycU?autoplay=1&si=M5aGcvliQ34u5R8s">
+                    <img src="./static/iron_man2.png" alt="Iron Man 2">
+                    <div class="overlay">
+                        <iframe src="" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
+                <div class="movie-item" data-title="Iron Man 3" data-trailer="https://www.youtube.com/embed/Ke1Y3P9D0Bc?si=Uh86m9kWHDkKG0EM&autoplay=1">
+                    <img src="./static/Iron man 3.png" alt="Iron Man 3">
+                    <div class="overlay">
+                        <iframe src="" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
+                <div class="movie-item" data-title="Avengers Infinity War" data-trailer="https://www.youtube.com/embed/6ZfuNTqbHE8?autoplay=1">
+                    <img src="./static/InfinityWars_300x300.png" alt="Avengers Infinity War">
+                    <div class="overlay">
+                        <iframe src="" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
+                <div class="movie-item" data-title="Bay Watch" data-trailer="https://www.youtube.com/embed/eyKOgnaf0BU?autoplay=1">
+                    <img src="./static/Bay-Watch.png" alt="Bay Watch">
+                    <div class="overlay">
+                        <iframe src="" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
+                <div class="movie-item" data-title="The Amazing Spider-man" data-trailer="https://www.youtube.com/embed/xcNt1t3joCg?autoplay=1">
+                    <img src="./static/The Amezing Spider-man.png" alt="The Amazing Spider-man">
+                    <div class="overlay">
+                        <iframe src="" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
+                <div class="movie-item" data-title="The Amezing Spider-man 2" data-trailer="https://www.youtube.com/embed/8vsJZDppH-g?si=7Ty3meY3ieYit0Gh&autoplay=1">
+                    <img src="./static/The Amezing Spider-man 2.png" alt="The Amezing Spider-man 2">
+                    <div class="overlay">
+                        <iframe src="" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <main>
+            <h2 class="description">La mia lista</h2>
+            <div class="movie-list" id="movie-list">
+                <div class="movie-item" data-title="Spider-Man 2 Il potere ei Electro" data-trailer="https://www.youtube.com/embed/gStva73Njso?autoplay=1">
+                    <img src="./static/Spider-Man 2 Il potere ei Electro.png" alt="Spider-Man 2 Il potere ei Electro">
+                    <div class="overlay">
+                        <iframe src="" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
+                <div class="movie-item" data-title="Spider-man 1" data-trailer="https://www.youtube.com/embed/t06RUxPbp_c?autoplay=1">
+                    <img src="./static/Spider-man 1.png" alt="Spider-man 1">
+                    <div class="overlay">
+                        <iframe src="" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
+                <div class="movie-item" data-title="Spider-man 2" data-trailer="https://www.youtube.com/embed/1s9Yln0YwCw?autoplay=1">
+                    <img src="./static/spiderman-2.png" alt="Spider-man 2">
+                    <div class="overlay">
+                        <iframe src="" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
+                <div class="movie-item" data-title="Spider-man 3" data-trailer="https://www.youtube.com/embed/vsOcXqCWpmM?autoplay=1">
+                    <img src="./static/The Amezing Spider-man 3.png" alt="Spider-man 3">
+                    <div class="overlay">
+                        <iframe src="" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
+                <div class="movie-item" data-title="Spider-Man homecoming" data-trailer="https://www.youtube.com/embed/rk-dF1lIbIg?autoplay=1" allow="autoplay; encrypted-media">
+                    <img src="./static/Spider-man homecoming.png" alt="Spider-Man homecoming">
+                    <div class="overlay">
+                        <iframe src="" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
+                <div class="movie-item" data-title="Spider-Man Far From Home" data-trailer="https://www.youtube.com/embed/5jTFjbyol4Q?autoplay=1" allow="autoplay; encrypted-media">
+                    <img src="./static/Spider-man far from home.png" alt="Spider-Man Far From Home">
+                    <div class="overlay">
+                        <iframe src="" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
+                <div class="movie-item" data-title="Spider-Man No Way Home" data-trailer="https://www.youtube.com/embed/ZBPAGbR6AHM?autoplay=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
+                    <img src="./static/Spider-man No way Home.png" alt="Spider-Man No Way Home">
+                    <div class="overlay">
+                        <iframe src="" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
+                <div class="movie-item" data-title="Avatar" data-trailer="https://www.youtube.com/embed/5PSNL1qE6VY?autoplay=1">
+                    <img src="./static/avatar.png" alt="Avatar">
+                    <div class="overlay">
+                        <iframe src="" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </main>
+    <script>
+        document.getElementById('search-input').addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase();
+            const movieItems = document.querySelectorAll('.movie-item');
+
+            movieItems.forEach(item => {
+                const title = item.getAttribute('data-title').toLowerCase();
+                if (title.includes(searchTerm)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            var movieItems = document.querySelectorAll('.movie-item');
+            movieItems.forEach(function(item) {
+                item.addEventListener('mouseover', function() {
+                    var iframe = this.querySelector('iframe');
+                    var trailerUrl = this.getAttribute('data-trailer');
+                    iframe.src = trailerUrl;
+                });
+
+                item.addEventListener('mouseleave', function() {
+                    var iframe = this.querySelector('iframe');
+                    iframe.src = '';
+                });
+            });
+        });
+    </script>
+</body>
+</html>

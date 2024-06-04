@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Mia Lista di Netflix</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #141414;
+            color: #fff;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            margin-right: 5rem;
+        }
+
+        .logo {
+            width: 100px;
+        }
+
+        .search-bar {
+            background-color: rgba(255, 255, 255, 0.2);
+            border: none;
+            padding: 0.5rem;
+            border-radius: 4px;
+            color: #fff;
+            width: 300px;
+        }
+
+        .search-bar::placeholder {
+            color: #ddd;
+        }
+
+        .main {
+            padding: 2rem;
+        }
+
+        .movie-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .movie-item {
+            position: relative;
+            width: 200px;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 1rem;
+        }
+
+        .movie-item img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 8px;
+            transition: transform 0.2s;
+        }
+
+        .movie-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.6);
+        }
+
+        .overlay iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .movie-item:hover .overlay {
+            display: flex;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="./Assets/logo.png" alt="logo" alt="Netflix Logo" class="logo"> 
+        <input type="text" class="search-bar" id="search-bar" placeholder="Cerca un film...">
+    </header>
+    <main>
+        <div class="movie-list" id="movie-list">
+            <div class="movie-item" data-title="Transformers 1" data-trailer="https://www.youtube.com/embed/CbX_SIz_9fk?autoplay=1">
+                <img src="./static/Transformers 1 Megan Fox.png" alt="Transformers 1">
+                <div class="overlay">
+                    <iframe src="" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="movie-item" data-title="Transformers 2 la vendetta del caduto" data-trailer="https://www.youtube.com/embed/K7gpUYGiJy4?autoplay=1">
+                <img src="./static/Transformers 2.png" alt="Transformers 2 l vendetta del caduto">
+                <div class="overlay">
+                    <iframe src="" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="movie-item" data-title="Transformers Dark of The Moon" data-trailer="https://www.youtube.com/embed/E-Sg_zJrDxc?autoplay=1">
+                <img src="./static/Transformers.png" alt="Transformers Dark of The Moon">
+                <div class="overlay">
+                    <iframe src="" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="movie-item" data-title="Transformers 4 l'era dell'estinsione" data-trailer="https://www.youtube.com/embed/LKVS0xPM80o?autoplay=1">
+                <img src="./static/Transformers 4.png" alt="Transformers 4 l'era dell'estinsione">
+                <div class="overlay">
+                    <iframe src="" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="movie-item" data-title="Transformers 5 l'ultimo cavaliere" data-trailer="https://www.youtube.com/embed/kUXl-L-bvQo?autoplay=1" frameborder="0"  allow="autoplay; encrypted-media" allowfullscreen >
+                <img src="./static/Transformers L'ultimo Cavaliere.png" alt="Transformers 5 l'ultimo cavaliere">
+                <div class="overlay">
+                    <iframe src="" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="movie-item" data-title="Transformers rise of the best" data-trailer="https://www.youtube.com/embed/itnqEauWQZM?autoplay=1"frameborder="0" allow="autoplay; encrypted-media" allowfullscreen >
+                <img src="./static/Transformers rise of the best-2.png." alt="Transformers  rise of the best">
+                <div class="overlay">
+                    <iframe src="" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="movie-item" data-title="Avengers End Game" data-trailer="https://www.youtube.com/embed/TcMBFSGVi1c?autoplay=1">
+                <img src="./static/Avengers-EndGame.png" alt="Avengers End Game">
+                <div class="overlay">
+                    <iframe src="" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="movie-item" data-title="Iron Man 1" data-trailer="https://www.youtube.com/embed/8ugaeA-nMTc?autoplay=1">
+                <img src="./static/Iron Man-1.png" alt="Iron Man 1">
+                <div class="overlay">
+                    <iframe src="" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="movie-item" data-title="Iron Man 2" data-trailer="https://www.youtube.com/embed/wKtcmiifycU?autoplay=1&si=M5aGcvliQ34u5R8s">
+                <img src="./static/iron_man2.png" alt="Iron Man 2">
+                <div class="overlay">
+                    <iframe src="" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="movie-item" data-title="Iron Man 3" data-trailer="https://www.youtube.com/embed/Ke1Y3P9D0Bc?si=Uh86m9kWHDkKG0EM&autoplay=1">
+                <img src="./static/Iron man 3.png" alt="Iron Man 3">
+                <div class="overlay">
+                    <iframe src="" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="movie-item" data-title="Avengers Infinity War" data-trailer="https://www.youtube.com/embed/6ZfuNTqbHE8?autoplay=1">
+                <img src="./static/InfinityWars_300x300.png" alt="Avengers Infinity War">
+                <div class="overlay">
+                    <iframe src="" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="movie-item" data-title="Bay Watch" data-trailer="https://www.youtube.com/embed/eyKOgnaf0BU?autoplay=1">
+                <img src="./static/Bay-Watch.png" alt="Bay Watch">
+                <div class="overlay">
+                    <iframe src="" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="movie-item" data-title="The Amazing Spider-man" data-trailer="https://www.youtube.com/embed/xcNt1t3joCg?autoplay=1">
+                <img src="./static/The Amezing Spider-man.png" alt="The Amazing Spider-man">
+                <div class="overlay">
+                    <iframe src="" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="movie-item" data-title="The Amezing Spider-man 2" data-trailer="https://www.youtube.com/embed/8vsJZDppH-g?si=7Ty3meY3ieYit0Gh&autoplay=1">
+                <img src="./static/The Amezing Spider-man 2.png" alt="The Amezing Spider-man 2">
+                <div class="overlay">
+                    <iframe src="" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="movie-item" data-title="Spider-Man 2 Il potere ei Electro" data-trailer="https://www.youtube.com/embed/gStva73Njso?autoplay=1">
+                <img src="./static/Spider-Man 2 Il potere ei Electro.png" alt="Spider-Man 2 Il potere ei Electro">
+                <div class="overlay">
+                    <iframe src="" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="movie-item" data-title="Spider-man 1" data-trailer="https://www.youtube.com/embed/t06RUxPbp_c?autoplay=1">
+                <img src="./static/Spider-man 1.png" alt="Spider-man 1">
+                <div class="overlay">
+                    <iframe src="" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="movie-item" data-title="Spider-man 2" data-trailer="https://www.youtube.com/embed/1s9Yln0YwCw?autoplay=1">
+                <img src="./static/spiderman-2.png" alt="Spider-man 2">
+                <div class="overlay">
+                    <iframe src="" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="movie-item" data-title="Spider-man 3" data-trailer="https://www.youtube.com/embed/vsOcXqCWpmM?autoplay=1">
+                <img src="./static/The Amezing Spider-man 3.png" alt="Spider-man 3">
+                <div class="overlay">
+                    <iframe src="" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="movie-item" data-title="Spider-Man homecoming" data-trailer="https://www.youtube.com/embed/rk-dF1lIbIg?autoplay=1" allow="autoplay; encrypted-media">
+                <img src="./static/Spider-man homecoming.png" alt="Spider-Man homecoming">
+                <div class="overlay">
+                    <iframe src="" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="movie-item" data-title="Spider-Man Far From Home" data-trailer="https://www.youtube.com/embed/5jTFjbyol4Q?autoplay=1" allow="autoplay; encrypted-media">
+                <img src="./static/Spider-man far from home.png" alt="Spider-Man Far From Home">
+                <div class="overlay">
+                    <iframe src="" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="movie-item" data-title="Spider-Man No Way Home" data-trailer="https://www.youtube.com/embed/ZBPAGbR6AHM?autoplay=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
+                <img src="./static/Spider-man No way Home.png" alt="Spider-Man No Way Home">
+                <div class="overlay">
+                    <iframe src="" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+             <div class="movie-item" data-title="Avatar" data-trailer="https://www.youtube.com/embed/5PSNL1qE6VY?autoplay=1">
+                <img src="./static/avatar.png" alt="Avatar">
+                <div class="overlay">
+                    <iframe src="" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div> 
+        </div>
+    </main>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const movieItems = document.querySelectorAll('.movie-item');
+            const searchBar = document.getElementById('search-bar');
+
+            movieItems.forEach(item => {
+                let timeout;
+
+                item.addEventListener('mouseenter', function() {
+                    const trailerSrc = this.getAttribute('data-trailer');
+                    clearTimeout(timeout);
+
+                    timeout = setTimeout(() => {
+                        playTrailer(trailerSrc, this);
+                    }, 1000); // Avvia il trailer dopo 1 secondo di hover
+                });
+
+                item.addEventListener('mouseleave', function() {
+                    clearTimeout(timeout);
+                });
+            });
+
+            function playTrailer(src, element) {
+                const overlay = element.querySelector('.overlay');
+                overlay.style.display = 'flex';
+                const iframe = overlay.querySelector('iframe');
+                iframe.src = src;
+
+                // Chiudi il trailer quando si clicca fuori
+                overlay.addEventListener('click', function() {
+                    this.style.display = 'none';
+                    iframe.src = '';
+                });
+            }
+
+            searchBar.addEventListener('input', function() {
+                const searchQuery = searchBar.value.toLowerCase();
+
+                movieItems.forEach(item => {
+                    const title = item.getAttribute('data-title').toLowerCase();
+                    if (title.includes(searchQuery)) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
